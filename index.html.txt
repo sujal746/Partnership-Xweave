@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnership with Xweave</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            overflow: hidden;
+        }
+        .container-shadow {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.6);
+        }
+        .rain-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+        }
+        .content-container {
+            position: relative;
+            z-index: 10;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid #4b5563;
+        }
+        .header-bg {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        }
+        .button-shadow {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+        .firefly-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen flex items-center justify-center p-4">
+    <canvas id="rain-canvas" class="rain-canvas"></canvas>
+    <div class="max-w-4xl mx-auto content-container container-shadow rounded-2xl overflow-hidden md:flex md:flex-col">
+        <!-- Firefly Canvas -->
+        <canvas id="firefly-canvas" class="firefly-canvas"></canvas>
+        
+        <!-- Header Section -->
+        <header class="header-bg text-white p-8 rounded-t-2xl">
+            <h1 class="text-4xl font-bold text-center">Partner with Xweave</h1>
+            <p class="text-lg text-center mt-2 opacity-70">Redefining Cross-Border Payments, Together.</p>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="p-8">
+            <!-- What We Do? -->
+            <section id="what-we-do" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-200 mb-4">What We Do</h2>
+                <div class="space-y-4">
+                    <p class="text-gray-400 leading-relaxed">
+                        At Xweave, we are revolutionizing cross-border payments by leveraging cutting-edge blockchain technology. We provide a seamless, pre-funding-free solution that ensures real-time, 24/7/365 settlements at highly competitive rates. Our intelligent routing engine, which is asset and network-agnostic, automatically finds the most efficient and cost-effective route for every transaction.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our platform is designed to be hyper-scalable and fully compliant, operating exclusively with a network of regulated partners. This ensures security, reliability, and global reach for all our clients. We offer a comprehensive suite of services that cater to various needs, from mobile wallets and remittance companies to large corporations and merchants.
+                    </p>
+                </div>
+            </section>
+
+            <!-- What Problem We Solve -->
+            <section id="problem-we-solve" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-200 mb-4">The Problem We Solve</h2>
+                <div class="space-y-4">
+                    <p class="text-gray-400 leading-relaxed">
+                        Traditional cross-border payments are often slow, expensive, and complex. They typically involve multiple intermediaries, hidden fees, and high foreign exchange (FX) risks due to the need for pre-funding and slow settlement times. This results in poor user experience, operational inefficiencies, and significant financial losses for businesses and individuals alike.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        We eliminate these pain points. Our platform provides a single, unified solution that bypasses the complexities of the traditional system. We solve the issues of slow settlements by enabling instant transactions, reduce costs by finding the most efficient routes, and mitigate FX risk by removing the need for pre-funding. Our solution simplifies global payments, making them accessible, transparent, and affordable for everyone.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why Partner with Us? -->
+            <section id="why-partner-with-us">
+                <h2 class="text-3xl font-bold text-gray-200 mb-4">Why Partner with Us?</h2>
+                <ul class="space-y-6 text-gray-400">
+                    <li class="flex items-start">
+                        <svg class="h-8 w-8 text-gray-400 mr-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-gray-200">Competitive Advantage</p>
+                            <p class="mt-1">
+                                Partnering with us gives you access to a state-of-the-art payment infrastructure that sets you apart from your competitors. Offer your customers a superior, real-time payment experience with transparent pricing.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-8 w-8 text-gray-400 mr-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-gray-200">Reduced Costs and Risks</p>
+                            <p class="mt-1">
+                                Eliminate the need for pre-funding and the associated FX risk. Our solution is designed to be the most cost-efficient, allowing you to save money on every transaction and pass those savings on to your customers.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="h-8 w-8 text-gray-400 mr-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-xl text-gray-200">Global Reach and Compliance</p>
+                            <p class="mt-1">
+                                Tap into our extensive network of regulated partners to expand your reach globally. Our platform ensures every transaction is compliant, giving you peace of mind and the ability to operate in new markets with confidence.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <!-- Contact CTA -->
+        <footer class="bg-gray-800 text-center p-6 rounded-b-2xl mt-8">
+            <h3 class="text-2xl font-bold text-gray-200">Ready to Partner?</h3>
+            <p class="mt-2 text-gray-400">Contact us today to learn more about how we can grow together.</p>
+            <a href="https://t.me/sujal746" class="mt-4 inline-block bg-gray-700 text-white font-semibold py-3 px-8 rounded-full button-shadow hover:bg-gray-600 transition duration-300">Contact Us</a>
+        </footer>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            // Rain animation
+            const rainCanvas = document.getElementById('rain-canvas');
+            const rainCtx = rainCanvas.getContext('2d');
+            let rainWidth, rainHeight;
+            let drops = [];
+
+            function resizeRainCanvas() {
+                rainWidth = window.innerWidth;
+                rainHeight = window.innerHeight;
+                rainCanvas.width = rainWidth;
+                rainCanvas.height = rainHeight;
+                drops = [];
+                for (let i = 0; i < 500; i++) {
+                    drops.push({
+                        x: Math.random() * rainWidth,
+                        y: Math.random() * rainHeight,
+                        length: Math.random() * 20 + 10,
+                        speed: Math.random() * 3 + 1,
+                        opacity: Math.random() * 0.5 + 0.3
+                    });
+                }
+            }
+
+            window.addEventListener('resize', resizeRainCanvas);
+            resizeRainCanvas();
+
+            function drawRain() {
+                rainCtx.clearRect(0, 0, rainWidth, rainHeight);
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const drop = drops[i];
+                    rainCtx.beginPath();
+                    rainCtx.moveTo(drop.x, drop.y);
+                    rainCtx.lineTo(drop.x, drop.y + drop.length);
+                    rainCtx.strokeStyle = `rgba(255, 255, 255, ${drop.opacity})`;
+                    rainCtx.lineWidth = 1;
+                    rainCtx.stroke();
+
+                    drop.y += drop.speed;
+                    if (drop.y > rainHeight) {
+                        drop.y = -drop.length;
+                        drop.x = Math.random() * rainWidth;
+                    }
+                }
+            }
+
+            // Firefly animation
+            const fireflyCanvas = document.getElementById('firefly-canvas');
+            const fireflyCtx = fireflyCanvas.getContext('2d');
+            let fireflyWidth, fireflyHeight;
+            let fireflies = [];
+            const fireflyCount = 20;
+
+            function resizeFireflyCanvas() {
+                const parent = fireflyCanvas.parentElement;
+                fireflyWidth = parent.clientWidth;
+                fireflyHeight = parent.clientHeight;
+                fireflyCanvas.width = fireflyWidth;
+                fireflyCanvas.height = fireflyHeight;
+                fireflies = [];
+                for (let i = 0; i < fireflyCount; i++) {
+                    fireflies.push({
+                        x: Math.random() * fireflyWidth,
+                        y: Math.random() * fireflyHeight,
+                        vx: Math.random() * 0.5 - 0.25,
+                        vy: Math.random() * 0.5 - 0.25,
+                        color: Math.random() > 0.5 ? '#fff' : '#0f0',
+                        glow: Math.random() * 10 + 5,
+                        size: Math.random() * 2 + 1,
+                    });
+                }
+            }
+
+            window.addEventListener('resize', resizeFireflyCanvas);
+            resizeFireflyCanvas();
+
+            function drawFireflies() {
+                fireflyCtx.clearRect(0, 0, fireflyWidth, fireflyHeight);
+                
+                for (let i = 0; i < fireflies.length; i++) {
+                    const firefly = fireflies[i];
+                    fireflyCtx.beginPath();
+                    fireflyCtx.arc(firefly.x, firefly.y, firefly.size, 0, Math.PI * 2);
+                    fireflyCtx.fillStyle = firefly.color;
+                    fireflyCtx.shadowBlur = firefly.glow;
+                    fireflyCtx.shadowColor = firefly.color;
+                    fireflyCtx.fill();
+                    
+                    firefly.x += firefly.vx;
+                    firefly.y += firefly.vy;
+
+                    // Randomly change direction
+                    if (Math.random() < 0.01) {
+                        firefly.vx = Math.random() * 0.5 - 0.25;
+                        firefly.vy = Math.random() * 0.5 - 0.25;
+                    }
+
+                    // Reset position if out of bounds
+                    if (firefly.x < 0 || firefly.x > fireflyWidth || firefly.y < 0 || firefly.y > fireflyHeight) {
+                        firefly.x = Math.random() * fireflyWidth;
+                        firefly.y = Math.random() * fireflyHeight;
+                    }
+                }
+            }
+            
+            function animate() {
+                drawRain();
+                drawFireflies();
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        };
+    </script>
+</body>
+</html>
