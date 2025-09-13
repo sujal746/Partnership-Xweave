@@ -36,7 +36,7 @@
         .button-shadow {
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         }
-        .firefly-canvas {
+        .firefly-canvas, .content-rain-canvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -52,12 +52,14 @@
     <div class="content-container container-shadow overflow-hidden md:flex md:flex-col min-h-screen mx-auto">
         <!-- Firefly Canvas -->
         <canvas id="firefly-canvas" class="firefly-canvas"></canvas>
+        <!-- Content Rain Canvas -->
+        <canvas id="content-rain-canvas" class="content-rain-canvas"></canvas>
         
         <!-- Header Section -->
         <header class="header-bg text-white p-8 flex flex-col items-center">
             <!-- Logo in a circular frame -->
             <div class="mb-4">
-                <img src="https://content.google-api.com/v1/content/uploaded:6cbbDzLx_400x400.jpg-ddb8ef9d-cbda-4f57-9f65-710e6b1d4a2a" alt="Xweave Logo" class="w-24 h-24 rounded-full border-2 border-gray-400 object-cover">
+                <img src="https://image2url.com/images/1757757829535-931e265b-5d9e-4e9e-812b-4601e7a6a0a7.jpg" alt="Xweave Logo" class="w-24 h-24 rounded-full border-2 border-gray-400 object-cover">
             </div>
             <h1 class="text-4xl font-bold text-center">Partner with Xweave</h1>
             <p class="text-lg text-center mt-2 opacity-70">Redefining Cross-Border Payments, Together.</p>
@@ -141,7 +143,7 @@
     
     <script>
         window.onload = function() {
-            // Rain animation
+            // Rain animation for full page
             const rainCanvas = document.getElementById('rain-canvas');
             const rainCtx = rainCanvas.getContext('2d');
             let rainWidth, rainHeight;
@@ -192,7 +194,7 @@
             const fireflyCtx = fireflyCanvas.getContext('2d');
             let fireflyWidth, fireflyHeight;
             let fireflies = [];
-            const fireflyCount = 20;
+            const fireflyCount = 50; // Increased firefly count
 
             function resizeFireflyCanvas() {
                 const parent = fireflyCanvas.parentElement;
@@ -246,9 +248,58 @@
                 }
             }
             
+            // Rain animation for content box
+            const contentRainCanvas = document.getElementById('content-rain-canvas');
+            const contentRainCtx = contentRainCanvas.getContext('2d');
+            let contentRainWidth, contentRainHeight;
+            let contentDrops = [];
+            const dropCount = 100;
+
+            function resizeContentRainCanvas() {
+                const parent = contentRainCanvas.parentElement;
+                contentRainWidth = parent.clientWidth;
+                contentRainHeight = parent.clientHeight;
+                contentRainCanvas.width = contentRainWidth;
+                contentRainCanvas.height = contentRainHeight;
+                contentDrops = [];
+                for (let i = 0; i < dropCount; i++) {
+                    contentDrops.push({
+                        x: Math.random() * contentRainWidth,
+                        y: Math.random() * contentRainHeight,
+                        length: Math.random() * 5 + 3,
+                        speed: Math.random() * 1 + 0.5,
+                        opacity: Math.random() * 0.2 + 0.1
+                    });
+                }
+            }
+
+            window.addEventListener('resize', resizeContentRainCanvas);
+            resizeContentRainCanvas();
+
+            function drawContentRain() {
+                contentRainCtx.clearRect(0, 0, contentRainWidth, contentRainHeight);
+                
+                for (let i = 0; i < contentDrops.length; i++) {
+                    const drop = contentDrops[i];
+                    contentRainCtx.beginPath();
+                    contentRainCtx.moveTo(drop.x, drop.y);
+                    contentRainCtx.lineTo(drop.x, drop.y + drop.length);
+                    contentRainCtx.strokeStyle = `rgba(255, 255, 255, ${drop.opacity})`;
+                    contentRainCtx.lineWidth = 1;
+                    contentRainCtx.stroke();
+
+                    drop.y += drop.speed;
+                    if (drop.y > contentRainHeight) {
+                        drop.y = -drop.length;
+                        drop.x = Math.random() * contentRainWidth;
+                    }
+                }
+            }
+
             function animate() {
                 drawRain();
                 drawFireflies();
+                drawContentRain();
                 requestAnimationFrame(animate);
             }
 
